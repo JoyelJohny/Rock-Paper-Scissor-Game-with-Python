@@ -2,10 +2,19 @@ import random
 from graphic_view import *
 from intro import *
 from count import *
+
+def try_again():
+    decision = input("Do you want to try again? (Yes/No): ").lower()
+    if decision == "y" or decision == "yes":
+        main()
+    else:
+        print("\n**************************************************************************************************")
+        exit
+
+intro()
 trial = 3
 Pscore = 0
 Cscore = 0
-intro()
 def main():
     global Pscore
     global Cscore
@@ -66,13 +75,19 @@ def main():
             print('''
         !!! You Win The Game !!!
 
-********************************************************************************************************
 ''')
+            trial = 3
+            Pscore = 0
+            Cscore = 0
+            try_again()
         else:
             print('''
         !!! You lost the Game !!!
 
-*********************************************************************************************************        
 ''')
+            trial = 3
+            Pscore = 0
+            Cscore = 0
+            try_again()
 
 main()
