@@ -6,10 +6,17 @@ from count import *
 def try_again():
     decision = input("Do you want to try again? (Yes/No): ").lower()
     if decision == "y" or decision == "yes":
+        print('''
+__________________________________________________________________________________________________________________________
+        
+                                                New Game
+                                        ''')
         main()
+    elif decision == "n" or decision == "no":
+        print("\n*************************************************************************************************************************")
+        exit()
     else:
-        print("\n**************************************************************************************************")
-        exit
+        try_again()
 
 intro()
 trial = 3
@@ -19,10 +26,11 @@ def main():
     global Pscore
     global Cscore
     global trial
-    if trial >= 1:
+    if trial >= 1 and (Pscore != 2 and Cscore !=2):
         num = random.randint(1,3)
-        print('\nChances left: ',trial)
-        player = int(input("Enter the number: "))
+        print('''__________________________________________________________________________________________________________________________        
+Chances Left: ''',trial)
+        player = int(input("Enter the number of the shape: "))
         count()
         if num == player:
             print(Tied[player])
